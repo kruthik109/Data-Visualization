@@ -1,0 +1,313 @@
+<html>
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel='stylesheet' href='./490vizwebpage.css'>
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <title>Dissecting the COVID-19 Pandemic Through Visualization</title>
+      </head>
+
+    <body style="background-color:rgb(236, 246, 255) ;">
+        <h2 style="padding-left: -2rem;">
+            <nav class="navbar navbar-dark" style="background-color: #203c50;">
+                <a class="navbar-brand" style="font-size:40px;" href="#"><i class="fa fa-globe"></i>  Dissecting the COVID-19 Pandemic Through Visualization</a>
+                <ul class="nav justify-content-end">
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
+                        View Data Subset
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" onclick="openCity(event, ['Confirmed', 'Deaths','Vaccine'])">All</a>
+                            <a class="dropdown-item" onclick="openCity(event, ['Confirmed'])">Confirmed</a>
+                            <a class="dropdown-item" onclick="openCity(event, ['Deaths'])">Deaths</a>
+                            <a class="dropdown-item" onclick="openCity(event, ['Vaccine'])">Vaccinated</a>
+                        </div>
+                    </div>
+                    <div class='nav-item'>
+                        <button type="button" style='margin-left: 1rem;' class="btn btn-outline-light" onclick="openCity(event, ['Results'])">Results</button>
+                    </div>
+                </ul>
+            </nav>
+        </h2>
+
+        <script>
+            // Get the element with id="defaultOpen" and click on it
+            document.getElementById("defaultOpen").click();
+        </script>
+
+        <div id="Confirmed" class="tabcontent" style="padding-left: 2rem; padding-top: 2rem; margin-top:-.5rem; background-color: rgb(236, 246, 255);">
+            <p style="font-size:25px"><strong>Confirmed Cases</strong></p>
+
+            <!-- Visualization Selection Bar -->
+            <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                <li class="nav-item">
+                  <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Worldwide</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">United States</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Forecast</a>
+                </li>
+            </ul>
+            <div class="tab-content" id="pills-tabContent">
+                <!-- Worldwide Tab -->
+                <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                    <p>The Worldwide confirmed cases have been on a an increase since the start of the pandemic in March of 2020. While there are moments of plateaus there are clear periods of increases
+                        which indicicate the different waves of this disease. Also, some countries have been impced harder than others by different waves and variants. The United States still has the highest number of total confirmed 
+                    cases.    </p>
+        
+                    <div class='tableauPlaceholder' id='viz1638205020346' style='position: relative'>
+                        <noscript><a href='#'>
+                            <img alt='Dashboard 1 ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;XH&#47;XHSJP886S&#47;1_rss.png' style='border: none' /></a>
+                        </noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> 
+                            <param name='embed_code_version' value='3' /> <param name='path' value='shared&#47;XHSJP886S' /> 
+                            <param name='toolbar' value='yes' />
+                            <param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;XH&#47;XHSJP886S&#47;1.png' /> 
+                            <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' />
+                            <param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' />
+                            <param name='filter' value='publish=yes' /></object>
+                    </div>                
+                        <script type='text/javascript'>                    
+                        var divElement = document.getElementById('viz1638205020346');                    
+                        var vizElement = divElement.getElementsByTagName('object')[0];                    
+                        if ( divElement.offsetWidth > 800 ) { vizElement.style.width='1000px';vizElement.style.height='827px';}
+                        else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='1000px';vizElement.style.height='827px';} 
+                        else { vizElement.style.width='100%';vizElement.style.height='1127px';}                     
+                        var scriptElement = document.createElement('script');                    
+                        scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    
+                        vizElement.parentNode.insertBefore(scriptElement, vizElement);                
+                        </script>
+                </div>
+                 <!-- US Tab -->
+                <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                    <p> The United States got impacted heavily early on in the pandemic. The United States has still has the highest number of total confirmed cases. California being the hightest state by far. </p>
+
+                    <div class='tableauPlaceholder' id='viz1638210654703' style='position: relative'>
+                            <noscript><a href='#'><img alt='Dashboard 2 ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;VI&#47;VIZFinalProjectUSDashboard&#47;Dashboard2&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'>
+                                <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> 
+                                <param name='site_root' value='' /><param name='name' value='VIZFinalProjectUSDashboard&#47;Dashboard2' />
+                                <param name='tabs' value='no' /><param name='toolbar' value='yes' />
+                                <param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;VI&#47;VIZFinalProjectUSDashboard&#47;Dashboard2&#47;1.png' /> 
+                                <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' />
+                                <param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' />
+                                <param name='display_count' value='yes' /><param name='language' value='en-US' />
+                                <param name='filter' value='publish=yes' /></object>
+                            
+                    </div>                
+                            <script type='text/javascript'>                   
+                            var divElement = document.getElementById('viz1638210654703');                    
+                            var vizElement = divElement.getElementsByTagName('object')[0];                    
+                            if ( divElement.offsetWidth > 800 ) { vizElement.style.width='1000px';vizElement.style.height='827px';} 
+                            else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='1000px';vizElement.style.height='827px';} 
+                            else { vizElement.style.width='100%';vizElement.style.height='1177px';}                     
+                            var scriptElement = document.createElement('script');                    
+                            scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                   
+                            vizElement.parentNode.insertBefore(scriptElement, vizElement);                
+                            </script>        
+                </div>
+                 <!-- Forecast Tab -->
+                <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+                    <p> 6 Month Worldwide Forecast </p> 
+                    <p> The line graph shows each contintents forecasted confirmed cases for the next 6 months using the historical data from January to Novermber 2021. </p>
+                    <div class='tableauPlaceholder' id='viz1638819844985' style='position: relative'>
+                        <noscript>
+                            <a href='#'><img alt='Dashboard 8 ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;VI&#47;VIZFinalProjectDashboardForcastedCases&#47;Dashboard8&#47;1_rss.png' style='border: none' /></a>
+                        </noscript>
+                        <object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> 
+                            <param name='embed_code_version' value='3' /> 
+                            <param name='site_root' value='' />
+                            <param name='name' value='VIZFinalProjectDashboardForcastedCases&#47;Dashboard8' />
+                            <param name='tabs' value='no' /><param name='toolbar' value='yes' />
+                            <param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;VI&#47;VIZFinalProjectDashboardForcastedCases&#47;Dashboard8&#47;1.png' /> 
+                            <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' />
+                            <param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' />
+                            <param name='display_count' value='yes' /><param name='language' value='en-US' />
+                            <param name='filter' value='publish=yes' />
+                        </object>
+                        </div>                
+                        <script type='text/javascript'>                    
+                            var divElement = document.getElementById('viz1638819844985');                    
+                            var vizElement = divElement.getElementsByTagName('object')[0];                    
+                            if ( divElement.offsetWidth > 800 ) { vizElement.style.width='1000px';vizElement.style.height='827px';} 
+                            else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='1000px';vizElement.style.height='827px';} 
+                            else { vizElement.style.width='100%';vizElement.style.height='727px';}                     
+                            var scriptElement = document.createElement('script');                    
+                            scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    
+                            vizElement.parentNode.insertBefore(scriptElement, vizElement);                
+                        </script>        
+                </div>
+            </div>            
+            
+        </div> 
+        
+        <div id="Deaths" class="tabcontent" style="padding-left: 2rem; padding-top: 2rem; margin-top:-.5rem; background-color: rgb(236, 246, 255);">
+                <p style="font-size:25px"><strong>Fatality Cases (Death)</strong></p>
+            <!-- Death data -->
+            <!-- Visualization Selection Bar -->
+            <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                <li class="nav-item">
+                <a class="nav-link active" id="pills-world-tab" data-toggle="pill" href="#pills-world" role="tab" aria-controls="pills-world" aria-selected="true">Worldwide</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" id="pills-us-tab" data-toggle="pill" href="#pills-us" role="tab" aria-controls="pills-us" aria-selected="false">United States</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" id="pills-forecast-tab" data-toggle="pill" href="#pills-forecast" role="tab" aria-controls="pills-forecast" aria-selected="false">Forecast</a>
+                </li>
+            </ul>
+            <!-- Worldwide Tab -->
+            <div class="tab-pane fade show active" id="pills-world" role="tabpanel" aria-labelledby="pills-world-tab">
+                <p> The deaths worldwide have begun to plateau as more resources like vaccines, highly effective PPE, and treaments have been discovered. Also, the access to all these resoruces has been an equally important
+                    challenge that needed to be overcome. Along with this, the coutries seeing the highest number of deaths have either lacked resources like India during the Delta variant and Peru during the lambda
+                    variant. Another factor that caused an increase of deaths was the lack of knowlege of how to prevent the virus from spreading like China when COVID-19 was first discovered. Finally, the political 
+                    climate of the countries impacted played a large role as seen with the United States.  
+                </p>
+                <div class='tableauPlaceholder' id='viz1638316382129' style='position: relative'>
+                    <noscript><a href='#'><img alt='Dashboard 3 ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;VI&#47;VIZFinalProjectDashboardDeaths&#47;Dashboard3&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'>
+                        <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> 
+                        <param name='site_root' value='' /><param name='name' value='VIZFinalProjectDashboardDeaths&#47;Dashboard3' />
+                        <param name='tabs' value='no' /><param name='toolbar' value='yes' />
+                        <param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;VI&#47;VIZFinalProjectDashboardDeaths&#47;Dashboard3&#47;1.png' /> 
+                        <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' />
+                        <param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' />
+                        <param name='display_count' value='yes' /><param name='language' value='en-US' /></object>
+                </div>                
+                        
+                <script type='text/javascript'>                    
+                var divElement = document.getElementById('viz1638316382129');                    
+                var vizElement = divElement.getElementsByTagName('object')[0];                    
+                if ( divElement.offsetWidth > 800 ) { vizElement.style.width='1000px';vizElement.style.height='827px';} 
+                else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='1000px';vizElement.style.height='827px';} 
+                else { vizElement.style.width='100%';vizElement.style.height='1177px';}                     
+                var scriptElement = document.createElement('script');                    
+                scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    
+                vizElement.parentNode.insertBefore(scriptElement, vizElement);                
+                </script>
+            </div>
+            <!-- US Tab -->
+            <div class="tab-pane fade" id="pills-us" role="tabpanel" aria-labelledby="pills-us-tab">
+                <p style='margin-top:-925px;'>The United States especially has seen the highest number of overall deaths due to a few main factors. The first factor being the political climate where the people and government was deeply divided on the correct approach to prevent the virus from spreading. 
+                    There was initially hesitency from the government to place a strict lockdown and mask madates and there was a strong push back from the people once this was implemented. Also now with the wide spread 
+                    availability of the vaccine there is a sigificant portions of the popultion that are hestitent to recieve it. 
+                </p>
+                <div class='tableauPlaceholder' id='viz1638316634913'>
+                    <noscript><a href='#'><img alt='Dashboard 4 ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;VI&#47;VIZFinalProjectDashboardUSDeaths&#47;Dashboard4&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'>
+                        <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> 
+                        <param name='embed_code_version' value='3' /> <param name='site_root' value='' />
+                        <param name='name' value='VIZFinalProjectDashboardUSDeaths&#47;Dashboard4' />
+                        <param name='tabs' value='no' /><param name='toolbar' value='yes' />
+                        <param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;VI&#47;VIZFinalProjectDashboardUSDeaths&#47;Dashboard4&#47;1.png' /> 
+                        <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' />
+                        <param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' />
+                        <param name='filter' value='publish=yes' /></object>
+                    </div>
+
+                    <script type='text/javascript'>                    
+                    var divElement = document.getElementById('viz1638316634913');                    
+                    var vizElement = divElement.getElementsByTagName('object')[0];                    
+                    if ( divElement.offsetWidth > 800 ) { vizElement.style.width='1000px';vizElement.style.height='827px';} 
+                    else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='1000px';vizElement.style.height='827px';} 
+                    else { vizElement.style.width='100%';vizElement.style.height='1177px';}                     
+                    var scriptElement = document.createElement('script');                    
+                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    
+                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                
+                    </script>
+            </div>            
+            <!-- Forecast Tab -->
+            <div class="tab-pane fade" id="pills-forecast" role="tabpanel" aria-labelledby="pills-forecast-tab">
+                <p style='margin-top: -910px;'> The line graph shows each contintent's forecasted deaths for the next 6 months using the historical data from January to November 2021. 
+                </p>
+                <div class='tableauPlaceholder' id='viz1638819398748' style='position: relative'><noscript><a href='#'><img alt='Dashboard 9 ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;VI&#47;VIZFinalProjectDashboardForcastedDeaths&#47;Dashboard9&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='VIZFinalProjectDashboardForcastedDeaths&#47;Dashboard9' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;VI&#47;VIZFinalProjectDashboardForcastedDeaths&#47;Dashboard9&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /><param name='filter' value='publish=yes' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1638819398748');                    var vizElement = divElement.getElementsByTagName('object')[0];                    if ( divElement.offsetWidth > 800 ) { vizElement.style.width='1000px';vizElement.style.height='827px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='1000px';vizElement.style.height='827px';} else { vizElement.style.width='100%';vizElement.style.height='727px';}                     var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+            </div>
+        
+        </div> 
+
+        <div id="Vaccine" class="tabcontent" style="padding-left: 2rem; padding-top: 2rem; margin-top: 50px; background-color: rgb(236, 246, 255);">
+                
+                <p style="font-size:25px"><strong>Vaccinations</strong></p>
+                        <!-- Visualization Selection Bar -->
+                    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                        <li class="nav-item">
+                        <a class="nav-link active" id="pills-vaccine-world" data-toggle="pill" href="#pills-vaccine-world" role="tab" aria-controls="pills-vaccine-world" aria-selected="true">Worldwide</a>
+                        </li>
+                    </ul>
+                
+                 <!-- Worldwide Tab -->
+                <div class="tab-pane fade show active" id="pills-vaccine-world" role="tabpanel" aria-labelledby="pills-vaccine-world">  
+                <p> People Fully Vaccinated per Hundred Worldwide</p>
+                <div class='tableauPlaceholder' id='viz1638766382988' style='position: relative'><noscript><a href='#'><img alt='Dashboard 6 ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;VI&#47;VIZFinalProjectWorldwidepiechart&#47;Dashboard6&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='VIZFinalProjectWorldwidepiechart&#47;Dashboard6' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;VI&#47;VIZFinalProjectWorldwidepiechart&#47;Dashboard6&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1638766382988');                    var vizElement = divElement.getElementsByTagName('object')[0];                    if ( divElement.offsetWidth > 800 ) { vizElement.style.width='1000px';vizElement.style.height='827px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='1000px';vizElement.style.height='827px';} else { vizElement.style.width='100%';vizElement.style.height='1027px';}                     var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script></div>
+                </div>
+
+
+        </div>
+        <div id='Results' class="tabcontent" style="padding-left: 2rem; display:none; background-color: rgb(236, 246, 255);">
+            <p style="font-size:25px"><strong>Correlation Discoveries</strong></p>
+            <p><b>Fatality Case Relationships</b></p>
+                <p>While there are strong correlations in the four categories
+                        there are outliers such as Peru which is the purple dot farthest to the left. This was because the lambda orginated and ravaged Peru from August 2020. Studies have shown that this variant
+                        is highly infections and more resistant to the existing vaccines. </p>
+
+                <div class='tableauPlaceholder' id='viz1638813271089' style='align-self: baseline;'><noscript><a href='#'><img alt='Dashboard 7 ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;VI&#47;VIZFinalProjectDeathsCorr&#47;Dashboard7&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='VIZFinalProjectDeathsCorr&#47;Dashboard7' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;VI&#47;VIZFinalProjectDeathsCorr&#47;Dashboard7&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1638813271089');                    var vizElement = divElement.getElementsByTagName('object')[0];                    if ( divElement.offsetWidth > 800 ) { vizElement.style.width='1000px';vizElement.style.height='827px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='1000px';vizElement.style.height='827px';} else { vizElement.style.width='100%';vizElement.style.height='1277px';}                     var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+            <p><b>Vaccinated Case Relationships</b></p>
+                <p> The main factors correlated to the people fully vaccinated in each country are determined as the life expercetance and human development index which have a postive correlation following 
+                    a linear trend with vaccinations. GDP is also a factor correlated to vaccinations, and it has a postive correlation and an exponential trend.
+                </p>
+                <div class='tableauPlaceholder' id='viz1638663420752' style='position: relative'>
+                <noscript><a href='#'><img alt='Dashboard 5 ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;VI&#47;VIZFinalProjectWorldwidescatter&#47;Dashboard5&#47;1_rss.png' style='border: none' /></a></noscript>
+                <object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='VIZFinalProjectWorldwidescatter&#47;Dashboard5' />
+                    <param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;VI&#47;VIZFinalProjectWorldwidescatter&#47;Dashboard5&#47;1.png' /> 
+                    <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' />
+                    <param name='display_count' value='yes' /><param name='language' value='en-US' /><param name='filter' value='publish=yes' /></object></div>                
+                
+                <script type='text/javascript'>                    
+                    var divElement = document.getElementById('viz1638663420752');                    
+                    var vizElement = divElement.getElementsByTagName('object')[0];                    
+                    if ( divElement.offsetWidth > 800 ) { vizElement.style.width='1000px';vizElement.style.height='827px';} 
+                    else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='1000px';vizElement.style.height='827px';} 
+                    else { vizElement.style.width='100%';vizElement.style.height='1027px';}                     
+                    var scriptElement = document.createElement('script');                    
+                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    
+                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                
+                </script>
+        </div>
+        <script>
+        function openCity(evt, cityName) {
+            // Declare all variables
+            var i, tabcontent, tablinks;
+
+            // Get all elements with class="tabcontent" and hide them
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+            }
+
+            // Get all elements with class="tablinks" and remove the class "active"
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+
+            // Show the current tab, and add an "active" class to the button that opened the tab
+            for (i = 0; i < cityName.length; i++) {
+                document.getElementById(cityName[i]).style.display = "block";
+                evt.currentTarget.className += " active";
+            }
+        }
+        </script>
+
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    </body>
+
+
+
+
+
+</html>
