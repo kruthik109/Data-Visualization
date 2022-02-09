@@ -1,46 +1,18 @@
 import sys
-from PyQt5.QtWidgets import QDialog, QApplication, QPushButton, QVBoxLayout, QLabel, QComboBox, QStyleFactory, \
-    QGridLayout, QSlider
+from PyQt5.QtWidgets import QDialog, QApplication, QPushButton, QVBoxLayout, QLabel, QComboBox, QSlider
 import pandas as pd
 import re
-import pyqtgraph as pg
+from PyQt5.QtCore import Qt
 import numpy as np
-
-import matplotlib.pyplot as plt
-import seaborn as sns
-from PyQt5.QtCore    import Qt
-from PyQt5.uic.properties import QtWidgets, QtCore
-
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
-from matplotlib.backends.backend_qt5agg import NavigationToolbar2QT as NavigationToolbar
 import matplotlib.pyplot as plt
-import random
 
-from matplotlib.figure import Figure
-import math
-
-x_0 ="h"
 class Window(QDialog):
-
 
     # constructor
     def __init__(self, parent=None):
         super(Window, self).__init__(parent)
-        title = 'plot'
-        width = 900
-        height = 400
-        left = 900
-        top = 400
-        self.x = ""
-        self.y = 0
-        c = 0
-        s= 0
         self.setGeometry(400, 400, 900, 900)
-
-
-
-
-
 
         self.xComboBox = QComboBox(self)
         self.xComboBox.addItems(["Area","Death rate", " Birth rate","GDP per capita","Population","Electricity consumption", "Highways",  "Total fertility rate", "Life expectancy at birth"])
@@ -69,21 +41,8 @@ class Window(QDialog):
         self.mySlider.setGeometry(30, 40, 200, 30)
         self.mySlider.valueChanged[int].connect(self.changeValue)
 
-
-
-
         button = QPushButton("Plot Current Attributes", self)
-        button.pressed.connect((self.find))
-        #x, y, c, s = self.find()
-
-
-        df = pd.read_csv("factbook.csv")
-        col = []
-        for i in range(0, 60, 10):
-            col.append(i)
-
-
-
+        button.pressed.connect(self.changeValue)
 
         grid = QVBoxLayout()
         grid.addWidget(self.xLabel)
@@ -99,142 +58,79 @@ class Window(QDialog):
         grid.addWidget(button)
         self.setLayout(grid)
 
-    def changeValue(self, value):
-        x = self.xComboBox.currentText()
-        y = self.yComboBox.currentText()
-        s = self.sComboBox.currentText()
-        c = self.cComboBox.currentText()
-
-        self.figure.clear()
-
-        # create an axis
-        ax = self.figure.add_subplot(111)
-
-
-        df = pd.read_csv("factbook.csv")
-        col = []
-        for i in range(0, 60, 10):
-            col.append(i)
-
-        non_decimal = re.compile(r'[^\d.]+')
-        if (type(df[x][0])) == str:
-            df[x] = df[x].apply(lambda x1: non_decimal.sub('',x1)).astype(float).astype(int)
-
-
-        if (type(df[y][0])) == str:
-            df[y] = df[y].apply(lambda y1: non_decimal.sub('', y1)).astype(float).astype(int)
-
-        if (type(df[s][0])) == str:
-            #print(df[s][0])
-            df[s] = df[s].apply(lambda x: non_decimal.sub('', x)).astype(float).astype(int)
-
-
-        if (type(df[c][0])) == str:
-            df[c] = df[c].apply(lambda x: non_decimal.sub('', x)).astype(float).astype(int)
-
-        df['new_c'] = (pd.cut(df[c], bins=5))
-
-        curr = max(df[s])
-
-        if curr > 150:
-            div = "5"
-            div += "0" * (len(str(math.trunc(curr)))-4)
-
-            df["s_new"]= df[s]*value/(int(div)*50)
-        else:
-            df["s_new"] = df[s]*value/50
-
-
-
-        b = ax.scatter(x=df[x], y=df[y], s = df["s_new"], c = df["new_c"].cat.codes)
-        t = y + " vs " + x
-        ax.set(xlabel=x, ylabel =y, title=t )
-
-        # scatter = a.scatter(x=df[x], y=df[y], s = df[s], c = df["new_c"].cat.codes, label= df["new_c"])
-        #
-        handles, labels = b.legend_elements(prop="sizes", alpha=0.6)
-
-        l = df["new_c"].unique()
-        legend1 = ax.legend(*b.legend_elements(),
-                            loc="best", title=c)
-        ax.add_artist(legend1)
-        legend2 = ax.legend(handles, labels, bbox_to_anchor=(1, 1),loc=2, title=s)
-        ax.set(xlabel=x, ylabel =y, title=t )
-        # plt.show()
-
-        self.canvas.draw()
-
-
-
-        #print(value)
-    def slide(self):
-        s = self.sComboBox.currentText()
-
-
-    def find(self):
+    def changeValue(self, *args):
         # finding the content of current item in combo box
         x = self.xComboBox.currentText()
         y = self.yComboBox.currentText()
         s = self.sComboBox.currentText()
         c = self.cComboBox.currentText()
 
+        #clear current figure
         self.figure.clear()
 
         # create an axis
         ax = self.figure.add_subplot(111)
 
-
         df = pd.read_csv("factbook.csv")
-        col = []
-        for i in range(0, 60, 10):
-            col.append(i)
 
+        #change column data from string to numeric
         non_decimal = re.compile(r'[^\d.]+')
         if (type(df[x][0])) == str:
             df[x] = df[x].apply(lambda x1: non_decimal.sub('',x1)).astype(float).astype(int)
-
 
         if (type(df[y][0])) == str:
             df[y] = df[y].apply(lambda y1: non_decimal.sub('', y1)).astype(float).astype(int)
 
         if (type(df[s][0])) == str:
-            #print(df[s][0])
             df[s] = df[s].apply(lambda x: non_decimal.sub('', x)).astype(float).astype(int)
-
 
         if (type(df[c][0])) == str:
             df[c] = df[c].apply(lambda x: non_decimal.sub('', x)).astype(float).astype(int)
 
+        #change color column from continous to discrete
         df['new_c'] = (pd.cut(df[c], bins=5))
 
-        curr = max(df[s])
+        #normalize the size data
+        if len(args) == 0:
+            df["s_new"] = df[s]/df[s].abs().max()
+            df["s_new"] = df["s_new"] * 4
+        else:
+            df["s_new"] = df[s] / df[s].abs().max()
+            df["s_new"] = df["s_new"] * args * 4
 
-        if curr > 150:
-            div = "5"
-            div += "0" * (len(str(math.trunc(curr)))-4)
+        #create scatter plot with new data
+        b = ax.scatter(x=df[x], y=df[y], s = df["s_new"], c = df["new_c"].cat.codes)
 
-            df[s]= df[s]/int(div)
-
-
-
-        b = ax.scatter(x=df[x], y=df[y], s = df[s], c = df["new_c"].cat.codes)
+        #create labels and title
         t = y + " vs " + x
         ax.set(xlabel=x, ylabel =y, title=t )
 
-        # scatter = a.scatter(x=df[x], y=df[y], s = df[s], c = df["new_c"].cat.codes, label= df["new_c"])
-        #
+        #extract handles and labels for legend
         handles, labels = b.legend_elements(prop="sizes", alpha=0.6)
 
-        l = df["new_c"].unique()
-        legend1 = ax.legend(*b.legend_elements(),
-                            loc="best", title=c)
+        #create custom labels for size legend since automatic values will show normalized data
+        num_labels = len(handles)
+        labels_new = list(np.arange((min(df[s])), (max(df[s])), ((max(df[s]) - min(df[s]))/(num_labels-1))))
+        labels_new = list(np.around(np.array(labels_new), 1))
+
+        #get and adjust the position of the graoh
+        box = ax.get_position()
+        ax.set_position([box.x0, box.y0+ box.height * 0.15, box.width * 0.9, box.height*0.9])
+
+        # create custom labels for color legend
+        num_labels_c = len(b.legend_elements()[0])
+        col_bins = pd.cut(df[c], bins=num_labels_c,precision=1)
+
+        #color legend
+        legend1 =ax.legend(b.legend_elements()[0],col_bins , title = c, loc='upper center', bbox_to_anchor=(0.5, -0.15), ncol = 5)
         ax.add_artist(legend1)
-        legend2 = ax.legend(handles, labels, bbox_to_anchor=(1, 1),loc=2, title="Sizes")
+
+        #size legend with custom labels
+        legend2 = ax.legend(handles, labels_new, loc = "center left", title=s,  bbox_to_anchor=(1, 0.5))
         ax.set(xlabel=x, ylabel =y, title=t )
-        # plt.show()
 
+        #draw new graph
         self.canvas.draw()
-
 
 if __name__ == '__main__':
         # creating apyqt5 application
